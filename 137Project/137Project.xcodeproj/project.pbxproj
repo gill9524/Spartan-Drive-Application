@@ -10,10 +10,10 @@
 		9E8A172720476E590089E69A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A172620476E590089E69A /* AppDelegate.swift */; };
 		9E8A172920476E590089E69A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A172820476E590089E69A /* ViewController.swift */; };
 		9E8A172C20476E590089E69A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A172A20476E590089E69A /* Main.storyboard */; };
-		9E8A172E20476E590089E69A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A172D20476E590089E69A /* Assets.xcassets */; };
 		9E8A173120476E590089E69A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A172F20476E590089E69A /* LaunchScreen.storyboard */; };
 		9E8A173C20476E590089E69A /* _37ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A173B20476E590089E69A /* _37ProjectTests.swift */; };
 		9E8A174720476E590089E69A /* _37ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A174620476E590089E69A /* _37ProjectUITests.swift */; };
+		AE0E26622068B10900944A75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE0E26612068B10900944A75 /* Assets.xcassets */; };
 		AE27B9362067779F002ADEAE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE27B9352067779F002ADEAE /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,6 @@
 		9E8A172620476E590089E69A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E8A172820476E590089E69A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9E8A172B20476E590089E69A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9E8A172D20476E590089E69A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E8A173020476E590089E69A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E8A173220476E590089E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E8A173720476E590089E69A /* 137ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 137ProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,7 @@
 		9E8A174620476E590089E69A /* _37ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _37ProjectUITests.swift; sourceTree = "<group>"; };
 		9E8A174820476E590089E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E8A175420476E690089E69A /* 137Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 137Project.entitlements; sourceTree = "<group>"; };
+		AE0E26612068B10900944A75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE27B9352067779F002ADEAE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -102,11 +102,11 @@
 		9E8A172520476E590089E69A /* 137Project */ = {
 			isa = PBXGroup;
 			children = (
+				AE0E26612068B10900944A75 /* Assets.xcassets */,
 				9E8A175420476E690089E69A /* 137Project.entitlements */,
 				9E8A172620476E590089E69A /* AppDelegate.swift */,
 				9E8A172820476E590089E69A /* ViewController.swift */,
 				9E8A172A20476E590089E69A /* Main.storyboard */,
-				9E8A172D20476E590089E69A /* Assets.xcassets */,
 				9E8A172F20476E590089E69A /* LaunchScreen.storyboard */,
 				9E8A173220476E590089E69A /* Info.plist */,
 			);
@@ -255,7 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8A173120476E590089E69A /* LaunchScreen.storyboard in Resources */,
-				9E8A172E20476E590089E69A /* Assets.xcassets in Resources */,
+				AE0E26622068B10900944A75 /* Assets.xcassets in Resources */,
 				9E8A172C20476E590089E69A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

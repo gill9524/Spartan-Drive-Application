@@ -21,6 +21,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let image = UIImage(named: "sjsu")
+        let imageView = UIImageView(image: image)
+        imageView.alpha = 0.3
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
