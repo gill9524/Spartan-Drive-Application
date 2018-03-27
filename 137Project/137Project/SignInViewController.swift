@@ -16,20 +16,26 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //Outlets
+    
+    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    //Actions
+    
+    @IBAction func signInButtonTapped(_ sender: UIButton) {
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func registerButtonTapped(_ sender: UIButton) {
     }
-    */
+    
+    @IBAction func forgotPasswordButtonTapped(_ sender: UIButton) {
+    }
+    
+    
+    
+    
+   
 
 }

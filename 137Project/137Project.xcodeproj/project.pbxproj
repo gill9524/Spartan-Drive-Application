@@ -16,6 +16,8 @@
 		AE0E26622068B10900944A75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE0E26612068B10900944A75 /* Assets.xcassets */; };
 		AE0E2664206A120F00944A75 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E2663206A120F00944A75 /* SignInViewController.swift */; };
 		AE0E2666206A129300944A75 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E2665206A129300944A75 /* HomeViewController.swift */; };
+		AE0E2668206A1C1700944A75 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E2667206A1C1700944A75 /* RegistrationViewController.swift */; };
+		AE0E266A206A1C6900944A75 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E2669206A1C6900944A75 /* PasswordResetViewController.swift */; };
 		AE27B9362067779F002ADEAE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE27B9352067779F002ADEAE /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		AE0E26612068B10900944A75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE0E2663206A120F00944A75 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		AE0E2665206A129300944A75 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AE0E2667206A1C1700944A75 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = 137Project/RegistrationViewController.swift; sourceTree = "<group>"; };
+		AE0E2669206A1C6900944A75 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PasswordResetViewController.swift; path = 137Project/PasswordResetViewController.swift; sourceTree = "<group>"; };
 		AE27B9352067779F002ADEAE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,8 @@
 		9E8A171A20476E590089E69A = {
 			isa = PBXGroup;
 			children = (
+				AE0E2667206A1C1700944A75 /* RegistrationViewController.swift */,
+				AE0E2669206A1C6900944A75 /* PasswordResetViewController.swift */,
 				9E8A172520476E590089E69A /* 137Project */,
 				9E8A173A20476E590089E69A /* 137ProjectTests */,
 				9E8A174520476E590089E69A /* 137ProjectUITests */,
@@ -288,9 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8A172920476E590089E69A /* ViewController.swift in Sources */,
+				AE0E266A206A1C6900944A75 /* PasswordResetViewController.swift in Sources */,
 				9E8A172720476E590089E69A /* AppDelegate.swift in Sources */,
 				AE0E2664206A120F00944A75 /* SignInViewController.swift in Sources */,
 				AE0E2666206A129300944A75 /* HomeViewController.swift in Sources */,
+				AE0E2668206A1C1700944A75 /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
