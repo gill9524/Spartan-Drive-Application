@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
 
@@ -25,6 +26,10 @@ class SignInViewController: UIViewController {
     //Actions
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
+        
+        let email = emailAddressTextField.text
+        let password = passwordTextField.text
+        
         //Validate required fields
         if(emailAddressTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!
         {
@@ -32,6 +37,24 @@ class SignInViewController: UIViewController {
             displayAlert(userMessage: "All fields are required")
             return
         }
+        
+        //Authorize user email and password
+        Auth.auth().signIn(withEmail: email!, password: password!, completion: {( user, error ) in
+            guard error == nil else {
+                self.displayAlert(userMessage: "Invalid email or password.")
+                return
+            }
+            
+            guard let user = user else {
+                return
+            }
+            
+            print(user.email ?? "No Email")
+            print(user.uid)
+            
+            //Segue from sign in page to home page
+            self.performSegue(withIdentifier: "SignInSegue", sender: nil)
+        })
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
