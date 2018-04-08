@@ -26,7 +26,6 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         
-        //let username = firstNameTextField.text! + lastNameTextField.text!
         let email = newEmailTextField.text
         let password = newPasswordTextField.text
         
@@ -68,7 +67,7 @@ class RegistrationViewController: UIViewController {
             }
             
             print(username?.email ?? "No Email")
-            print(username?.uid ?? "No ID")
+            print(username?.uid ?? "")
             
             //Create and store user profile information
             let changeRequest = username?.createProfileChangeRequest()
@@ -78,7 +77,8 @@ class RegistrationViewController: UIViewController {
                     return
                 }
                 
-                self.performSegue(withIdentifier: "Registration View Controller", sender: nil)
+                //Segue from registration page to home page
+                self.performSegue(withIdentifier: "RegisterSegue", sender: nil)
             })
             
         })
