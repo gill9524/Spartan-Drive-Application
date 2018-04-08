@@ -7,16 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-   
+    
     //Outlets
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -31,7 +25,11 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-       
+        
+        //let username = firstNameTextField.text! + lastNameTextField.text!
+        let email = newEmailTextField.text
+        let password = newPasswordTextField.text
+        
         //Validate required fields
         if(firstNameTextField.text?.isEmpty)! || (lastNameTextField.text?.isEmpty)! || (newEmailTextField.text?.isEmpty)! || (newPasswordTextField.text?.isEmpty)! || (confirmPasswordTextField.text?.isEmpty)!
         {
@@ -60,8 +58,31 @@ class RegistrationViewController: UIViewController {
         
         view.addSubview(activityIndicator)
         
-        //TODO:
-        //Send HTTP request here to send the information to database
+        //Creating user account in Firebase
+        Auth.auth().createUser(withEmail: email!, password: password!, completion: {(username, error) in
+            
+            //Error Handling
+            guard error == nil else{
+                self.displayAlert(userMessage: "Invalid")
+                return
+            }
+            
+            print(username?.email ?? "No Email")
+            print(username?.uid ?? "No ID")
+            
+            //Create and store user profile information
+            let changeRequest = username?.createProfileChangeRequest()
+            changeRequest?.commitChanges(completion: { (error) in
+                guard error == nil else{
+                    self.displayAlert(userMessage: "Error creating user profile")
+                    return
+                }
+                
+                self.performSegue(withIdentifier: "Registration View Controller", sender: nil)
+            })
+            
+        })
+        
         
         
         
@@ -75,7 +96,7 @@ class RegistrationViewController: UIViewController {
             let OKAction = UIAlertAction(title: "OK", style: .default)
             { (action:UIAlertAction!) in
                 DispatchQueue.main.async {
-                        //self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
                     
                 }
                 
@@ -85,5 +106,5 @@ class RegistrationViewController: UIViewController {
         }
     }
     
-
+    
 }
