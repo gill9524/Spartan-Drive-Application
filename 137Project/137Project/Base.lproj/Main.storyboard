@@ -309,23 +309,7 @@
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <barButtonItem title="Add to Database" id="zN9-4y-dkS">
-                                        <connections>
-                                            <action selector="addToDatabase:" destination="6Y9-nd-rfi" id="Pu4-JX-e8f"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Query" width="132.66666666666666" id="48Q-vG-kU0">
-                                        <connections>
-                                            <action selector="queryDatabase:" destination="6Y9-nd-rfi" id="Xi2-9c-k1Z"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Remove" width="223.33333333333334" id="I3B-w3-gWY">
-                                        <connections>
-                                            <action selector="removeFromDatabase:" destination="6Y9-nd-rfi" id="zYp-Zv-a86"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,6 +327,6 @@
         <image name="sjsu" width="860" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pPM-OQ-jQc"/>
+        <segue reference="d08-eW-z2y"/>
     </inferredMetricsTieBreakers>
 </document>
