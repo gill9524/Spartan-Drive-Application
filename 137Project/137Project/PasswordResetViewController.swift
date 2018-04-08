@@ -32,10 +32,37 @@ class PasswordResetViewController: UIViewController {
     }
     
     @IBAction func resetPasswordTapped(_ sender: UIButton) {
+        //Validate required fields
+        if(resetEmailTextField.text?.isEmpty)! || (newPasswordTextField.text?.isEmpty)! || (confirmNewPasswordTextField.text?.isEmpty)!
+        {
+            //Display Error fill out all textfields
+            displayAlert(userMessage: "All fields are required")
+            return
+        }
     }
     
     
     
-
+    
+   
+    
+    
+    //Displays an alert message
+    func displayAlert(userMessage:String) -> Void {
+        DispatchQueue.main.async {
+            let alertControl = UIAlertController(title:"Alert", message: userMessage, preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            { (action:UIAlertAction!) in
+                DispatchQueue.main.async {
+                    //self.dismiss(animated: true, completion: nil)
+                    
+                }
+                
+            }
+            alertControl.addAction(OKAction)
+            self.present(alertControl, animated: true, completion: nil)
+        }
+    }
 
 }

@@ -47,7 +47,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signInButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EAr-ls-vAl"/>
-                                    <segue destination="6Y9-nd-rfi" kind="show" id="e8K-95-a4n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-SS-gnx">
@@ -165,7 +164,6 @@
                                 </state>
                                 <connections>
                                     <action selector="resetPasswordTapped:" destination="iN7-iY-Ysh" eventType="touchUpInside" id="V0V-jZ-T3U"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="pPM-OQ-jQc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -326,7 +324,4 @@
         <image name="green" width="1920" height="1080"/>
         <image name="sjsu" width="860" height="590"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="d08-eW-z2y"/>
-    </inferredMetricsTieBreakers>
 </document>

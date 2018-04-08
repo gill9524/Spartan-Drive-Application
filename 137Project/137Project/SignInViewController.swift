@@ -25,6 +25,13 @@ class SignInViewController: UIViewController {
     //Actions
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
+        //Validate required fields
+        if(emailAddressTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!
+        {
+            //Display Error fill out all textfields
+            displayAlert(userMessage: "All fields are required")
+            return
+        }
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
@@ -36,6 +43,28 @@ class SignInViewController: UIViewController {
     
     
     
-   
+    
+    
+    
+    
+    
+    
+    //Displays an alert message
+    func displayAlert(userMessage:String) -> Void {
+        DispatchQueue.main.async {
+            let alertControl = UIAlertController(title:"Alert", message: userMessage, preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            { (action:UIAlertAction!) in
+                DispatchQueue.main.async {
+                    //self.dismiss(animated: true, completion: nil)
+                    
+                }
+                
+            }
+            alertControl.addAction(OKAction)
+            self.present(alertControl, animated: true, completion: nil)
+        }
+    }
 
 }
