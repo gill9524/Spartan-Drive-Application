@@ -47,6 +47,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signInButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EAr-ls-vAl"/>
+                                    <segue destination="6Y9-nd-rfi" kind="show" identifier="SignInSegue" id="keL-he-Gsn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-SS-gnx">
@@ -59,7 +60,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jKz-of-Gcl"/>
-                                    <segue destination="7cP-5J-Lmn" kind="show" id="QTH-dh-07d"/>
+                                    <segue destination="7cP-5J-Lmn" kind="show" identifier="NewAccountSegue" id="QTH-dh-07d"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apa-af-JLh">
@@ -252,6 +253,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButtonTapped:" destination="7cP-5J-Lmn" eventType="touchUpInside" id="i4j-Ie-pMc"/>
+                                    <segue destination="6Y9-nd-rfi" kind="show" identifier="RegisterSegue" id="LnA-4X-V2H"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register New Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUi-rD-sTh">
@@ -324,4 +326,7 @@
         <image name="green" width="1920" height="1080"/>
         <image name="sjsu" width="860" height="590"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LnA-4X-V2H"/>
+    </inferredMetricsTieBreakers>
 </document>
