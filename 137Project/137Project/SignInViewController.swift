@@ -27,8 +27,8 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         
-        let email = emailAddressTextField.text
-        let password = passwordTextField.text
+        guard let email = emailAddressTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
         
         //Validate required fields
         if(emailAddressTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!
@@ -39,38 +39,23 @@ class SignInViewController: UIViewController {
         }
         
         //Authorize user email and password
-        Auth.auth().signIn(withEmail: email!, password: password!, completion: {( user, error ) in
-            guard error == nil else {
-                self.displayAlert(userMessage: "Invalid email or password.")
-                return
+        Auth.auth().signIn(withEmail: email, password: password) { user, error  in
+            if(error == nil && user != nil) {
+                self.performSegue(withIdentifier: "SignInSegue", sender: nil)
             }
-            
-            guard let user = user else {
-                return
+            else {
+                self.displayAlert(userMessage: "Invalid username or password")
             }
-            
-            print(user.email ?? "No Email")
-            print(user.uid)
-            
-            //Segue from sign in page to home page
-            self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-        })
+        }
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "NewAccountSegue", sender: nil)
     }
     
     @IBAction func forgotPasswordButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "ForgotPasswordSegue", sender: nil)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     //Displays an alert message
     func displayAlert(userMessage:String) -> Void {
