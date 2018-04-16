@@ -26,8 +26,8 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         
-        let email = newEmailTextField.text
-        let password = newPasswordTextField.text
+        guard let email = newEmailTextField.text else {return}
+        guard let password = newPasswordTextField.text else {return}
         
         //Validate required fields
         if(firstNameTextField.text?.isEmpty)! || (lastNameTextField.text?.isEmpty)! || (newEmailTextField.text?.isEmpty)! || (newPasswordTextField.text?.isEmpty)! || (confirmPasswordTextField.text?.isEmpty)!
@@ -58,34 +58,18 @@ class RegistrationViewController: UIViewController {
         view.addSubview(activityIndicator)
         
         //Creating user account in Firebase
-        Auth.auth().createUser(withEmail: email!, password: password!, completion: {(username, error) in
-            
-            //Error Handling
-            guard error == nil else{
-                self.displayAlert(userMessage: "Invalid")
-                return
-            }
-            
-            print(username?.email ?? "No Email")
-            print(username?.uid ?? "")
-            
-            //Create and store user profile information
-            let changeRequest = username?.createProfileChangeRequest()
-            changeRequest?.commitChanges(completion: { (error) in
-                guard error == nil else{
-                    self.displayAlert(userMessage: "Error creating user profile")
-                    return
-                }
+        Auth.auth().createUser(withEmail: email , password: password) {user, error in
+            if(error == nil && user != nil){
+                self.displayAlert(userMessage: "Account Successfully Created")
                 
-                //Segue from registration page to home page
+                //Segue from registration page back to sign in page
                 self.performSegue(withIdentifier: "RegisterSegue", sender: nil)
-            })
-            
-        })
-        
-        
-        
-        
+            }
+            else{
+                self.displayAlert(userMessage: "Error creating account")
+                print("Error: \(error!.localizedDescription)")
+            }
+        }
     } //End registrationButtonTapped
     
     //Displays an alert message
