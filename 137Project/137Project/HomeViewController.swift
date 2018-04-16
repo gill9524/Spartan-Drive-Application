@@ -7,18 +7,20 @@
 //
 
 import UIKit
-
+import Firebase
 
 class HomeViewController: UIViewController {
 
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func handleLogout(_ target: UIBarButtonItem){
+        try! Auth.auth().signOut()
+        displayAlert(userMessage: "Signing Out")
+        self.performSegue(withIdentifier: "SignOutSegue", sender: nil)
     }
     
     
@@ -27,9 +29,23 @@ class HomeViewController: UIViewController {
     
     
     
-    
-    
-    
+    //Displays an alert message
+    func displayAlert(userMessage:String) -> Void {
+        DispatchQueue.main.async {
+            let alertControl = UIAlertController(title:"Alert", message: userMessage, preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            { (action:UIAlertAction!) in
+                DispatchQueue.main.async {
+                    //self.dismiss(animated: true, completion: nil)
+                    
+                }
+                
+            }
+            alertControl.addAction(OKAction)
+            self.present(alertControl, animated: true, completion: nil)
+        }
+    }
     
     
     
