@@ -18,9 +18,9 @@ class HomeViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-   
-    
-
+   //Get uid
+    let userID = Auth.auth().currentUser!.uid
+    var fileName = ""
     //Image picker action
     @IBAction func uploadClicked(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func downloadClicked(_ sender: UIButton) {
-        
+        print ("FileName is : \(fileName)")
     }
 
     @IBAction func handleLogout(_ sender: UIButton) {
@@ -61,8 +61,10 @@ class HomeViewController: UIViewController {
     //Start image upload to firebase
     func uploadImageToFirebaseStorage(data: NSData)
     {
+        displayAlertInput()
         //Set reference path
-        let storageRef = Storage.storage().reference(withPath: "images/test.jpg")
+        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+        
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
         storageRef.putData(data as Data, metadata: uploadMetaData) { (metadata, error) in
@@ -84,7 +86,9 @@ class HomeViewController: UIViewController {
     //If uploading videos
     func uploadMovieToFirebaseStorage(url: NSURL)
     {
-        let storageRef = Storage.storage().reference(withPath: "videos/test.mov")
+        displayAlertInput()
+        //Set reference path
+        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "video/quicktime"
         storageRef.putFile(from: url as URL, metadata: uploadMetaData) { (metadata, error) in
@@ -98,6 +102,24 @@ class HomeViewController: UIViewController {
         
     }
     
+    //Displays an alert message for user to input file name
+    func displayAlertInput() -> Void {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Uploading", message: "Enter a name for the file", preferredStyle: .alert)
+            
+            alert.addTextField { (textField) in
+                textField.text = ""
+            }
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak alert] (_) in
+                let textField = alert?.textFields![0]
+                self.fileName = (textField?.text)!
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
 }
 
 //Extension for the image picker

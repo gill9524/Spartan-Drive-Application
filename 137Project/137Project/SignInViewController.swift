@@ -17,6 +17,8 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    
     //Outlets
     
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -42,6 +44,7 @@ class SignInViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { user, error  in
             if(error == nil && user != nil) {
                 self.performSegue(withIdentifier: "SignInSegue", sender: nil)
+                
             }
             else {
                 self.displayAlert(userMessage: "Invalid username or password")
