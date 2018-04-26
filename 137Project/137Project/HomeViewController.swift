@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     }
    //Get uid
     let userID = Auth.auth().currentUser!.uid
-    var fileName = ""
+    var fileName = String()
     //Image picker action
     @IBAction func uploadClicked(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
     {
         displayAlertInput()
         //Set reference path
-        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+        let storageRef = Storage.storage().reference().child("images").child("\(userID)").child("\(fileName)")
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
     {
         displayAlertInput()
         //Set reference path
-        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+        let storageRef = Storage.storage().reference().child("movies").child("\(userID)").child("\(fileName)")
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "video/quicktime"
         storageRef.putFile(from: url as URL, metadata: uploadMetaData) { (metadata, error) in
@@ -113,7 +113,6 @@ class HomeViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak alert] (_) in
                 let textField = alert?.textFields![0]
                 self.fileName = (textField?.text)!
-                
             }))
             
             self.present(alert, animated: true, completion: nil)
@@ -145,6 +144,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
                 uploadMovieToFirebaseStorage(url: movieURL)
             }
         }
+        
         dismiss(animated: true, completion: nil)
         
     }
@@ -153,7 +153,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     
     
-    
+
     
     
     
