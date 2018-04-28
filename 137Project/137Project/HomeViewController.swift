@@ -60,6 +60,8 @@ class HomeViewController: UIViewController {
     //Start image upload to firebase
     func uploadImageToFirebaseStorage(data: NSData)
     {
+        //let imageName = StoredFilesViewController()
+        
         displayAlertInput()
         //Set reference path
         let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
@@ -70,6 +72,8 @@ class HomeViewController: UIViewController {
             if(error != nil) {
                 print("Error received \(String(describing: error?.localizedDescription))")
             } else {
+                //let name = self.fileName
+                //imageName.storeImageNames(imageNames: name)
                 print("Upload Completed, Here is the metadata \(String(describing: metadata))")
             }
         }
