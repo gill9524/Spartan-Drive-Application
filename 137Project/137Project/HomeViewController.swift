@@ -37,25 +37,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func downloadClicked(_ sender: UIButton) {
-        //Create reference for file to be downloaded
-        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
-        
-        //Start download
-        storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-            if error != nil {
-                self.displayAlert(userMessage: "Error downloading file. Try Again.")
-            }
-            else {
-                let image = UIImage(data: data!)
-               // self.myImageView.image = image!
-                self.displayAlert(userMessage: "Download successful!")
-            }
-        }
-    }
+//    @IBAction func downloadClicked(_ sender: UIButton) {
+//        //Create reference for file to be downloaded
+//        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+//
+//        //Start download
+//        storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+//            if error != nil {
+//                self.displayAlert(userMessage: "Error downloading file. Try Again.")
+//            }
+//            else {
+//                let image = UIImage(data: data!)
+//               // self.myImageView.image = image!
+//                self.displayAlert(userMessage: "Download successful!")
+//            }
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,7 +64,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         //Create reference for file to be downloaded
         let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
-        
+
         //Start download
         storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if error != nil {
@@ -82,7 +82,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let image = UIImage(data: data!)
                 //self.myImageView.image = image!
                 cell.myImageView.image = image
-                cell.fileNameLabel.text = "\(self.fileName)"
+                cell.fileNameLabel.text = "self.fileName"
                 //self.displayAlert(userMessage: "Download successful!")
             }
         }
