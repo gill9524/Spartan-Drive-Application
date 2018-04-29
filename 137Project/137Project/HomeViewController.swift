@@ -11,7 +11,7 @@ import Firebase
 import MobileCoreServices
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,14 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-   //Get uid
+
+    
+    //Get uid
     let userID = Auth.auth().currentUser!.uid
     var fileName = ""
+    
     
     //Image picker action
     @IBAction func uploadClicked(_ sender: UIButton) {
@@ -45,10 +48,47 @@ class HomeViewController: UIViewController {
             }
             else {
                 let image = UIImage(data: data!)
-                self.myImageView.image = image!
+               // self.myImageView.image = image!
                 self.displayAlert(userMessage: "Download successful!")
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        
+        //Create reference for file to be downloaded
+        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+        
+        //Start download
+        storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+            if error != nil {
+                self.displayAlert(userMessage: "Error downloading file. Try Again.")
+            }
+            else {
+                storageRef.getMetadata(completion: { (metadata, error) in
+                    if let error = error {
+                        print("error")
+                    }
+                    else {
+                        cell.fileNameLabel.text = metadata?.name
+                    }
+                })
+                let image = UIImage(data: data!)
+                //self.myImageView.image = image!
+                cell.myImageView.image = image
+                cell.fileNameLabel.text = "\(self.fileName)"
+                //self.displayAlert(userMessage: "Download successful!")
+            }
+        }
+        
+        return cell
+        
     }
 
     @IBAction func handleLogout(_ sender: UIButton) {
@@ -57,33 +97,35 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "SignOutSegue", sender: nil)
     }
     
+    
+    
     //Start image upload to firebase
     func uploadImageToFirebaseStorage(data: NSData)
     {
         //let imageName = StoredFilesViewController()
         
         displayAlertInput()
-        //Set reference path
-        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
         
-        let uploadMetaData = StorageMetadata()
-        uploadMetaData.contentType = "image/jpeg"
-        storageRef.putData(data as Data, metadata: uploadMetaData) { (metadata, error) in
-            if(error != nil) {
-                print("Error received \(String(describing: error?.localizedDescription))")
-            } else {
-                //let name = self.fileName
-                //imageName.storeImageNames(imageNames: name)
-                print("Upload Completed, Here is the metadata \(String(describing: metadata))")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            //Set reference path
+            let storageRef = Storage.storage().reference().child("\(self.userID)").child("\(self.fileName)")
+            
+            let uploadMetaData = StorageMetadata()
+            uploadMetaData.contentType = "image/jpeg"
+            storageRef.putData(data as Data, metadata: uploadMetaData) { (metadata, error) in
+                if(error != nil) {
+                    print("Error received \(String(describing: error?.localizedDescription))")
+                } else {
+                    self.collectionView.reloadData()
+                    //let name = self.fileName
+                    //imageName.storeImageNames(imageNames: name)
+                    print("Upload Completed, Here is the metadata \(String(describing: metadata))")
+                }
             }
         }
         
-        //Monitor progress of upload if wanted
-        //        uploadTask.observe(.progress) { [weak self] (snapshot) in
-        //            guard let strongSelf = self else { return }
-        //            guard let progress = snapshot.progress else {return}
-        //            //strongSelf.progressView.progress = Float(progress.fractionCompleted)
-        //        }
+        
+        
     }
     
     //If uploading videos
@@ -102,7 +144,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
+    
     //Displays an alert message
     func displayAlert(userMessage:String) -> Void {
         DispatchQueue.main.async {
