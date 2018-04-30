@@ -37,6 +37,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBAction func deleteClicked(_ sender: Any) {
+       let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
+        
+        storageRef.delete { error in
+            if let error = error {
+                self.displayAlert(userMessage: "Error deleting file. Try Again.")
+            }
+            else {
+                self.displayAlert(userMessage: "File deleted successfully")
+
+            }
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
 //    @IBAction func downloadClicked(_ sender: UIButton) {
 //        //Create reference for file to be downloaded
 //        let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
@@ -60,7 +79,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        
+        cell.myImageView.image = nil
+        cell.fileNameLabel.text = ""
+        
+//        if(cell.myImageView.image == nil) {
+//
+//        }
         
         //Create reference for file to be downloaded
         let storageRef = Storage.storage().reference().child("\(userID)").child("\(fileName)")
